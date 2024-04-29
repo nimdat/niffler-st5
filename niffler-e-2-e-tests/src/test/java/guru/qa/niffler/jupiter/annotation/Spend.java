@@ -10,11 +10,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.METHOD, ElementType.ANNOTATION_TYPE})
 public @interface Spend {
-
     CurrencyValues currency();
-
     double amount();
-
     String description();
-
 }
