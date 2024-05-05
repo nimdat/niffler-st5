@@ -10,7 +10,7 @@ public class AuthPage {
     private final SelenideElement loginBtn = mainBtns.$(byText("Login"));
     private final SelenideElement registerBtn = mainBtns.$(byText("Register"));
 
-    public void loginBtnClick() {
+    public void clickLoginBtn() {
         loginBtn.click();
     }
 }

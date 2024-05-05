@@ -2,7 +2,6 @@ package guru.qa.niffler.test;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
 import guru.qa.niffler.jupiter.annotation.GenerateCategory;
 import guru.qa.niffler.jupiter.annotation.GenerateSpend;
 import guru.qa.niffler.jupiter.extension.CategoryExtension;
@@ -41,7 +40,7 @@ public class SpendingTest {
     @BeforeEach
     void doLogin() {
         Selenide.open("http://127.0.0.1:3000/main");
-        authPage.loginBtnClick();
+        authPage.clickLoginBtn();
         loginPage.setUsername("dima");
         loginPage.setPassword("12345");
         loginPage.clickSignInBtn();
@@ -76,8 +75,7 @@ public class SpendingTest {
     )
     @Test
     void spendingShouldBeDeletedAfterTableAction(SpendJson spendJson) {
-        SelenideElement rowWithSpending1 = mainPage.findSpendingRowByCategoryName(spendJson.category());
-        mainPage.chooseSpending(rowWithSpending1);
+        mainPage.selectSpendingByCategoryName(spendJson.category());
         mainPage.deleteSpending();
         mainPage.checkCountOfSpendings(0);
     }
