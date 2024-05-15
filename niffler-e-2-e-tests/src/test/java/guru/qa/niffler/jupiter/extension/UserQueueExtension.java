@@ -47,7 +47,7 @@ public class UserQueueExtension implements
         USERS.put(INVITATION_RECEIVED, invitationReceivedQueue);
     }
 
-    private static List<Parameter> getParameters(ExtensionContext context) {
+    private List<Parameter> getParameters(ExtensionContext context) {
         List<Method> allMethods = new ArrayList<>();
 
         allMethods.add(context.getRequiredTestMethod());
