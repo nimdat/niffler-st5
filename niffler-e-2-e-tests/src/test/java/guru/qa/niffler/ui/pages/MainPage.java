@@ -23,6 +23,12 @@ public class MainPage {
         return this;
     }
 
+    @Step("Проверка текста описания {descriptionName}")
+    public MainPage checkSpendingByDescriptionName(String descriptionName) {
+        spendingRows.find(text(descriptionName)).shouldHave(text(descriptionName));
+        return this;
+    }
+
     @Step("Удалить расходы")
     public MainPage deleteSpending() {
         deleteSpendingBtn.click();
