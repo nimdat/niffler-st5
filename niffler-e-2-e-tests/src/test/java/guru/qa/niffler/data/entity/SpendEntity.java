@@ -27,7 +27,20 @@ public class SpendEntity {
         spendEntity.setSpendDate(spendJson.spendDate());
         spendEntity.setAmount(spendJson.amount());
         spendEntity.setDescription(spendJson.description());
-        spendEntity.category.setCategory(spendJson.category());
+        spendEntity.setCategory(new CategoryEntity());
+
+        return spendEntity;
+    }
+
+    public static SpendEntity fromJson(SpendJson spendJson, CategoryEntity category) {
+        SpendEntity spendEntity = new SpendEntity();
+        spendEntity.setId(spendJson.id());
+        spendEntity.setUsername(spendJson.username());
+        spendEntity.setCurrency(spendJson.currency());
+        spendEntity.setSpendDate(spendJson.spendDate());
+        spendEntity.setAmount(spendJson.amount());
+        spendEntity.setDescription(spendJson.description());
+        spendEntity.setCategory(category);
 
         return spendEntity;
     }

@@ -4,26 +4,20 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import guru.qa.niffler.jupiter.annotation.GenerateCategory;
 import guru.qa.niffler.jupiter.annotation.GenerateSpend;
-import guru.qa.niffler.jupiter.extension.BrowserExtension;
-import guru.qa.niffler.jupiter.extension.CategoryExtension;
-import guru.qa.niffler.jupiter.extension.SpendExtension;
+import guru.qa.niffler.jupiter.annotation.meta.HttpTest;
 import guru.qa.niffler.model.CurrencyValues;
 import guru.qa.niffler.model.SpendJson;
 import guru.qa.niffler.ui.pages.AuthPage;
 import guru.qa.niffler.ui.pages.LoginPage;
 import guru.qa.niffler.ui.pages.MainPage;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
-@ExtendWith({
-        BrowserExtension.class,
-        CategoryExtension.class,
-        SpendExtension.class
-})
+@HttpTest
 public class SpendingTest {
     private final AuthPage authPage = new AuthPage();
     private final LoginPage loginPage = new LoginPage();
@@ -58,6 +52,7 @@ public class SpendingTest {
             currency = CurrencyValues.RUB
     )
     @Test
+    @DisplayName("Удаление траты")
     void spendingShouldBeDeletedAfterTableAction(SpendJson spendJson) {
         mainPage.selectSpendingByCategoryName(spendJson.category());
         mainPage.deleteSpending();
